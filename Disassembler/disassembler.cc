@@ -27,8 +27,6 @@
 
         }//End of printAdd
     
-    
-
        void printAnd(int inst){
             int dr = inst >> 9 & 7;
             int sr1 = inst >> 6 & 7; 
@@ -53,15 +51,6 @@
 
              }//End of printAnd
 
-
-
-
-
-
-
-
-
-    
         void printBr(int inst, int pc){
             printf("BR");
             int cond = inst >> 9 & 7;
@@ -105,22 +94,6 @@
         
             }//End of printBr
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         void printJmpRet(int inst){
         int reg = inst >> 6 & 7;
         if(reg == 7){
@@ -130,8 +103,6 @@
             printf("JMP\tR%X\n", reg);
         }
         }//End of printJmpRet
-
-
 
         void printLd(int inst, int pc)
         {
@@ -158,7 +129,6 @@
 
         }//End of printLdr
 
-        
         void printLdi(int inst, int pc){
         int im = inst & 0x1FF;
         if(inst >> 8 & 1){
@@ -171,7 +141,6 @@
 
         }//End of printLdi
 
-
         void printLea(int inst, int pc){
         int im = inst & 0x1FF;
         if(inst >> 8 & 1){
@@ -180,10 +149,6 @@
         int offSet = pc + im;
         printf("LEA\tR%X, x%X\n", getSubInt(9,11,inst), offSet);
         }//End of printLea
-
-
-
-
 
         void printSt(int inst, int pc){
          int sr = inst >> 9 & 7;
@@ -218,8 +183,6 @@
         printf("STI\tR%X, x%X\n", getSubInt(9,11,inst), offSet);
             }//End of printSti
 
-
-
         void printNot(int inst){printf("NOT\tR%X, R%X\n",(inst >> 9 & 7), (inst >> 6 & 7));}
         
         void printRti(int inst){printf("RTI\n");}
@@ -252,7 +215,6 @@
         }
             
         }//End of printTrap
-
 
     int getMask(int start,int end, int bin){
 	    if((bin >1) ||(bin < 0) || (start > end) || (start > 31) || (start < 0) || (end > 31) || (end < 0))
@@ -385,5 +347,4 @@
 int main(){
 char filename[] = "test2.hex";
 printAssembly(filename);
-
 }
